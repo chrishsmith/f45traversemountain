@@ -1,0 +1,80 @@
+/* CSS Variables */
+:root {
+    /* Color Palette */
+    --color-primary: #ff4500;        /* F45 Orange */
+    --color-primary-dark: #e03e00;
+    --color-primary-light: #ff6a33;
+    --color-secondary: #1a1a1a;      /* Dark Gray/Black */
+    --color-secondary-light: #333333;
+    --color-accent: #ff0000;         /* Red for urgency */
+    --color-success: #28a745;        /* Green for CTAs */
+    --color-warning: #ffc107;
+    --color-danger: #dc3545;
+    --color-white: #ffffff;
+    --color-light-gray: #f8f9fa;
+    --color-gray: #6c757d;
+    --color-dark-gray: #343a40;
+    --color-black: #000000;
+    
+    /* Gradients */
+    --gradient-primary: linear-gradient(to right, #ff4500, #ff0000);
+    --gradient-dark: linear-gradient(to right, #1a1a1a, #333333);
+    
+    /* Typography */
+    --font-family-primary: 'Arial', sans-serif;
+    --font-family-secondary: 'Impact', sans-serif;
+    
+    --font-size-xs: 1.2rem;
+    --font-size-sm: 1.4rem;
+    --font-size-md: 1.6rem;
+    --font-size-lg: 1.8rem;
+    --font-size-xl: 2.4rem;
+    --font-size-xxl: 3.2rem;
+    --font-size-xxxl: 4.8rem;
+    --font-size-hero: 6.4rem;
+    
+    --font-weight-normal: 400;
+    --font-weight-medium: 500;
+    --font-weight-semibold: 600;
+    --font-weight-bold: 700;
+    --font-weight-black: 900;
+    
+    /* Spacing */
+    --spacing-xs: 0.4rem;
+    --spacing-sm: 0.8rem;
+    --spacing-md: 1.6rem;
+    --spacing-lg: 2.4rem;
+    --spacing-xl: 3.2rem;
+    --spacing-xxl: 4.8rem;
+    --spacing-xxxl: 6.4rem;
+    
+    /* Borders */
+    --border-radius-sm: 0.4rem;
+    --border-radius-md: 0.8rem;
+    --border-radius-lg: 1.6rem;
+    --border-radius-xl: 2.4rem;
+    --border-radius-circle: 50%;
+    
+    /* Shadows */
+    --shadow-sm: 0 0.2rem 0.4rem rgba(0, 0, 0, 0.1);
+    --shadow-md: 0 0.4rem 0.8rem rgba(0, 0, 0, 0.12);
+    --shadow-lg: 0 1rem 2rem rgba(0, 0, 0, 0.15);
+    --shadow-xl: 0 2rem 4rem rgba(0, 0, 0, 0.2);
+    
+    /* Transitions */
+    --transition-fast: 0.2s ease;
+    --transition-normal: 0.3s ease;
+    --transition-slow: 0.5s ease;
+    
+    /* Container */
+    --container-max-width: 120rem;
+    --container-padding: 2rem;
+    
+    /* Z-index */
+    --z-index-dropdown: 1000;
+    --z-index-sticky: 1020;
+    --z-index-fixed: 1030;
+    --z-index-modal-backdrop: 1040;
+    --z-index-modal: 1050;
+    --z-index-tooltip: 1060;
+}

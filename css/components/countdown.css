@@ -1,0 +1,38 @@
+/* Countdown Timer Component Styles */
+
+.countdown {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-sm);
+    background-color: var(--color-secondary-light);
+    border-radius: var(--border-radius-md);
+    padding: var(--spacing-md);
+}
+
+.countdown__item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 5rem;
+}
+
+.countdown__number {
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-white);
+    line-height: 1;
+}
+
+.countdown__label {
+    font-size: var(--font-size-xs);
+    color: var(--color-gray);
+    margin-top: var(--spacing-xs);
+}
+
+.countdown__separator {
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-white);
+    margin-top: -0.5rem;
+}

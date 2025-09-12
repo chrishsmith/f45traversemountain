@@ -1,0 +1,124 @@
+/* Trainers Component Styles */
+
+.trainers {
+    background-color: var(--color-secondary);
+    padding: var(--spacing-xxl) 0;
+}
+
+.trainers__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: var(--spacing-lg);
+    margin-top: var(--spacing-xl);
+}
+
+.trainer {
+    background-color: var(--color-secondary-light);
+    border-radius: var(--border-radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+    text-align: center;
+}
+
+.trainer:hover {
+    transform: translateY(-0.5rem);
+    box-shadow: var(--shadow-lg);
+}
+
+.trainer__image-container {
+    position: relative;
+    padding-top: 100%; /* 1:1 Aspect Ratio */
+    overflow: hidden;
+}
+
+.trainer__image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    transition: transform var(--transition-normal);
+}
+
+.trainer:hover .trainer__image {
+    transform: scale(1.05);
+}
+
+.trainer__info {
+    padding: var(--spacing-md);
+}
+
+.trainer__name {
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-bold);
+    margin-bottom: var(--spacing-xs);
+    color: var(--color-white);
+}
+
+.trainer__title {
+    font-size: var(--font-size-sm);
+    color: var(--color-primary);
+    font-weight: var(--font-weight-medium);
+}
+
+.trainers__intro {
+    max-width: 70rem;
+    margin: 0 auto var(--spacing-xl);
+    text-align: center;
+    color: var(--color-white);
+    font-size: var(--font-size-lg);
+    line-height: 1.6;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .trainers__grid {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        gap: var(--spacing-md);
+    }
+    
+    .trainer__name {
+        font-size: var(--font-size-md);
+    }
+    
+    .trainer__info {
+        padding: var(--spacing-sm);
+    }
+    
+    .trainers__intro {
+        font-size: var(--font-size-md);
+        padding: 0 var(--spacing-md);
+        margin-bottom: var(--spacing-lg);
+    }
+    
+    .trainer:hover {
+        transform: translateY(-0.3rem);
+    }
+}
+
+/* Extra small devices */
+@media (max-width: 480px) {
+    .trainers__grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--spacing-sm);
+    }
+    
+    .trainer__name {
+        font-size: var(--font-size-sm);
+    }
+    
+    .trainer__title {
+        font-size: var(--font-size-xs);
+    }
+    
+    .trainer:hover {
+        transform: none; /* Disable hover effect on very small devices */
+    }
+    
+    .trainer:hover .trainer__image {
+        transform: none; /* Disable image zoom on very small devices */
+    }
+}

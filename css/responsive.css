@@ -1,0 +1,126 @@
+/* Responsive Styles */
+
+/* Large Screens (default styles are for large screens) */
+@media (max-width: 1200px) {
+    html {
+        font-size: 56.25%; /* 9px = 0.9rem */
+    }
+    
+    .container {
+        padding: 0 var(--spacing-lg);
+    }
+    
+    .hero__title-main {
+        font-size: calc(var(--font-size-hero) * 0.9);
+    }
+    
+    .hero__title-location {
+        font-size: calc(var(--font-size-xxxl) * 0.9);
+    }
+}
+
+/* Medium Screens */
+@media (max-width: 992px) {
+    html {
+        font-size: 50%; /* 8px = 0.8rem */
+    }
+    
+    .hero__content {
+        flex-direction: column;
+    }
+    
+    .hero__text,
+    .hero__form {
+        width: 100%;
+        max-width: 60rem;
+    }
+    
+    .features__grid {
+        grid-template-columns: repeat(auto-fit, minmax(22rem, 1fr));
+    }
+}
+
+/* Small Screens */
+@media (max-width: 768px) {
+    section {
+        padding: var(--spacing-xl) 0;
+    }
+    
+    .hero {
+        padding: var(--spacing-lg) 0 var(--spacing-xl);
+    }
+    
+    .hero__logo-img {
+        max-width: 150px;
+    }
+    
+    .testimonial {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    
+    .testimonial__author {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .stats {
+        flex-direction: column;
+        align-items: center;
+        gap: var(--spacing-lg);
+    }
+    
+    .stats__item {
+        width: 100%;
+        max-width: 30rem;
+    }
+    
+    .cta__form-row {
+        flex-direction: column;
+    }
+    
+    .footer__content {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    
+    .footer__legal {
+        flex-direction: column;
+        align-items: center;
+        gap: var(--spacing-md);
+    }
+}
+
+/* Extra Small Screens */
+@media (max-width: 576px) {
+    .container {
+        padding: 0 var(--spacing-md);
+    }
+    
+    .hero__title-main {
+        font-size: var(--font-size-xxxl);
+    }
+    
+    .hero__title-location {
+        font-size: var(--font-size-xxl);
+    }
+    
+    .hero__title-offer {
+        font-size: var(--font-size-xl);
+    }
+    
+    .section-title {
+        font-size: var(--font-size-xl);
+    }
+    
+    
+    .lead-form {
+        padding: var(--spacing-lg);
+    }
+    
+    .faq__question-text {
+        font-size: var(--font-size-md);
+    }
+}
