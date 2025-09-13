@@ -72,19 +72,27 @@
                             <p class="lead-form__subtitle">Book your first class instantly</p>
                         </div>
                         
-                        <form id="leadCaptureForm" class="lead-form__form" action="javascript:void(0);" method="POST">
+                        <form id="leadForm" class="lead-form__form">
                             <div class="lead-form__input-group">
-                                <input type="text" id="firstName" name="firstName" class="lead-form__input" placeholder="First Name" required>
+                                <input type="text" name="firstName" class="lead-form__input" placeholder="First Name" required>
                             </div>
                             <div class="lead-form__input-group">
-                                <input type="text" id="lastName" name="lastName" class="lead-form__input" placeholder="Last Name" required>
+                                <input type="text" name="lastName" class="lead-form__input" placeholder="Last Name" required>
                             </div>
                             <div class="lead-form__input-group">
-                                <input type="tel" id="phoneNumber" name="phoneNumber" class="lead-form__input" placeholder="Phone Number" required>
+                                <input type="tel" name="phone" class="lead-form__input" placeholder="Phone" required>
                             </div>
                             <div class="lead-form__input-group">
-                                <input type="email" id="emailAddress" name="emailAddress" class="lead-form__input" placeholder="Email Address" required>
+                                <input type="email" name="email" class="lead-form__input" placeholder="Email" required>
                             </div>
+                            <!-- SMS consent checkbox commented out
+                            <div class="lead-form__input-group">
+                                <label style="display:block;margin:8px 0" class="lead-form__consent">
+                                    <input type="checkbox" name="consent_sms" value="Yes" required>
+                                    I agree to receive texts from F45 Traverse Mountain. Msg/data rates may apply. Reply STOP to opt out.
+                                </label>
+                            </div>
+                            -->
                             <button type="submit" class="lead-form__submit-btn">START MY $7 TRIAL <span class="lead-form__btn-arrow">→</span></button>
                         </form>
                         
@@ -356,24 +364,34 @@
                 <h2 class="cta__title">START YOUR 7-DAY TRIAL FOR $7</h2>
                 <p class="cta__subtitle">Book your first F45 class instantly → Get results in week 1</p>
                 
-                <form id="ctaForm" class="cta__form" action="javascript:void(0);" method="POST">
+                <form id="ctaForm" class="cta__form">
                     <div class="cta__form-row">
                         <div class="cta__input-group">
-                            <input type="text" id="ctaFirstName" name="firstName" class="cta__input" placeholder="First Name" required>
+                            <input type="text" name="firstName" class="cta__input" placeholder="First Name" required>
                         </div>
                         <div class="cta__input-group">
-                            <input type="text" id="ctaLastName" name="lastName" class="cta__input" placeholder="Last Name" required>
+                            <input type="text" name="lastName" class="cta__input" placeholder="Last Name" required>
                         </div>
                     </div>
                     <div class="cta__form-row">
                         <div class="cta__input-group">
-                            <input type="tel" id="ctaPhoneNumber" name="phoneNumber" class="cta__input" placeholder="Phone Number" required>
+                            <input type="tel" name="phone" class="cta__input" placeholder="Phone" required>
                         </div>
                     </div>
                     <div class="cta__form-row">
                         <div class="cta__input-group cta__input-group--full">
-                            <input type="email" id="ctaEmailAddress" name="emailAddress" class="cta__input" placeholder="Email Address" required>
+                            <input type="email" name="email" class="cta__input" placeholder="Email" required>
                         </div>
+                    </div>
+                    <div class="cta__form-row">
+                        <!-- SMS consent checkbox commented out
+                        <div class="cta__input-group cta__input-group--full">
+                            <label style="display:block;margin:8px 0" class="cta__consent">
+                                <input type="checkbox" name="consent_sms" value="Yes" required>
+                                I agree to receive texts from F45 Traverse Mountain. Msg/data rates may apply. Reply STOP to opt out.
+                            </label>
+                        </div>
+                        -->
                     </div>
                     <div class="cta__form-row">
                         <button type="submit" class="cta__submit-btn">START MY $7 TRIAL → BOOK FIRST CLASS <span class="cta__btn-arrow">→</span></button>
@@ -659,8 +677,44 @@
 
     <!-- JavaScript Files -->
     <script src="js/config.js"></script>
-    <script src="js/form-validation.js"></script>
     <script src="js/faq-accordion.js"></script>
     <script src="js/testimonial-carousel.js"></script>
+
+    <!-- GHL Integration Script -->
+    <script>
+      const WEBHOOK_URL = "https://services.leadconnectorhq.com/hooks/XdwpduYqc9iUKSXmBtCB/webhook-trigger/3d3529c9-c798-41ca-89ef-b4c6e0cb2c7e";
+
+      // keep any UTMs
+      const params = new URLSearchParams(location.search);
+      const utmKeys = ["utm_source","utm_medium","utm_campaign","utm_term","utm_content","gclid","fbclid"];
+
+      // Handle both forms with the same logic
+      document.querySelectorAll("#leadForm, #ctaForm").forEach(form => {
+        form.addEventListener("submit", async (e) => {
+          e.preventDefault();
+          const fd = new FormData(e.target);
+          const payload = Object.fromEntries(fd.entries());
+
+          // attach context for filtering/mapping in GHL
+          payload.offer = "7-for-7";
+          payload.landing_page = location.href;
+          payload.webhook_key = "f45_tm_prod";
+          utmKeys.forEach(k => payload[k] = params.get(k) || "");
+
+          try {
+            const r = await fetch(WEBHOOK_URL, {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify(payload)
+            });
+            if (!r.ok) throw new Error("Webhook error");
+            window.location.href = "/thank-you.html";
+          } catch (err) {
+            alert("Sorry, something went wrong. Please text us and we will get you booked.");
+            console.error(err);
+          }
+        });
+      });
+    </script>
 </body>
 </html>
